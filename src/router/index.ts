@@ -1,5 +1,6 @@
+// @ts-ignore
+import routes from 'virtual:generated-pages'
 import { createRouter, createWebHistory } from 'vue-router'
-import routes from 'voie-pages'
 
 const router = createRouter({
   history: createWebHistory(),

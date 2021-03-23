@@ -47,8 +47,8 @@
     "vite": "^2.0.5",
     "vite-plugin-components": "^0.8.3",
     "vite-plugin-md": "^0.6.1",
-    "vite-plugin-style-import": "^0.8.1",
-    "vite-plugin-voie": "^0.7.3"
+    "vite-plugin-pages": "^0.7.2",
+    "vite-plugin-style-import": "^0.8.1"
   },
   "browserslist": [
     "> 1%",

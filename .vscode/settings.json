@@ -27,5 +27,12 @@
   "prettier.requireConfig": true,
   "css.validate": false,
   "less.validate": false,
-  "scss.validate": false
+  "scss.validate": false,
+  "vite.port": 3000,
+  "vite.autoStart": false,
+  "vetur.grammar.customBlocks": {
+    "docs": "md",
+    "i18n": "json",
+    "route": "yaml"
+  }
 }

@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
-import voie from 'vite-plugin-voie'
+import pages from 'vite-plugin-pages'
 import markdown from 'vite-plugin-md'
 import components from 'vite-plugin-components'
 import styleImport from 'vite-plugin-style-import'
@@ -45,8 +45,9 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
     }),
     jsx(),
-    voie({
+    pages({
       extensions: ['vue', 'md'],
+      routeBlockLang: 'yaml',
     }),
     components({
       deep: true,
