@@ -3,9 +3,15 @@ import App from '@/App.vue'
 import router from '@/router'
 import http from '@/plugins/http'
 import touch from '@/plugins/touch'
-import store, { recordTokenChange } from '@/store'
+import store from '@/store'
+import bootstrap from './bootstrap'
 import './styles/index.less'
 
-createApp(App).use(store).use(router).use(http).use(touch).mount('#app')
+const app = createApp(App)
 
-recordTokenChange()
+app.use(store)
+app.use(router)
+app.use(http)
+app.use(touch)
+
+bootstrap(app, () => app.mount('#app'))

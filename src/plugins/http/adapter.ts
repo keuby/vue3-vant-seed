@@ -1,8 +1,8 @@
-import { useTokenStore } from '@/store'
+import store, { useTokenStore } from '@/store'
 import { AxiosAdapter, AxiosRequestConfig } from 'axios'
 
 export const authAdapter = (adapter: AxiosAdapter): AxiosAdapter => {
-  const token = useTokenStore()
+  const token = useTokenStore(store)
   return (config: AxiosRequestConfig) => {
     config.headers.Authorization = 'Bearer ' + token.token
     return adapter(config)
