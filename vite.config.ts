@@ -4,6 +4,7 @@ import jsx from '@vitejs/plugin-vue-jsx'
 import voie from 'vite-plugin-voie'
 import markdown from 'vite-plugin-md'
 import components from 'vite-plugin-components'
+import styleImport from 'vite-plugin-style-import'
 
 import { resolve } from 'path'
 import { readFileSync } from 'fs'
@@ -11,7 +12,7 @@ import postcss from 'postcss'
 import lessParser from 'postcss-less'
 import postcssImport from 'postcss-import'
 
-function loadGloalStyles(...paths: string[]) {
+function GloalStylesLoader(...paths: string[]) {
   const styles = Promise.all(
     paths.map((path) =>
       postcss().use(postcssImport()).process(readFileSync(path, 'utf8'), {
@@ -61,6 +62,15 @@ export default defineConfig({
       },
       wrapperClasses: 'markdown-body',
     }),
+    styleImport({
+      libs: [
+        {
+          esModule: true,
+          libraryName: 'vant',
+          resolveStyle: (name) => `vant/es/${name}/style/index`,
+        },
+      ],
+    }),
   ],
   resolve: {
     alias: [
@@ -74,7 +84,10 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,
-        additionalData: loadGloalStyles('./src/styles/variables.less', './src/styles/mixins.less'),
+        additionalData: GloalStylesLoader(
+          './src/styles/variables.less',
+          './src/styles/mixins.less'
+        ),
       },
     },
   },
