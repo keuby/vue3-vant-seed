@@ -4,7 +4,7 @@
     <p>token: {{ user.bearerToken }}</p>
     <div>
       set token:
-      <inputs v-model="user.token" type="text" />
+      <input v-model="user.token" type="text" />
     </div>
     <van-list
       v-model:error="state.error"
@@ -19,16 +19,11 @@
 </template>
 
 <script lang="ts">
-import { Cell, List } from 'vant'
 import { useTokenStore } from '@/store'
 import { defineComponent, reactive } from '@vue/runtime-core'
 import { useHttpClient } from '@/plugins/http'
 
 export default defineComponent({
-  components: {
-    [Cell.name]: Cell,
-    [List.name]: List,
-  },
   setup() {
     const http = useHttpClient()
     const user = useTokenStore()

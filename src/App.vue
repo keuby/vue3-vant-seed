@@ -3,7 +3,11 @@
     <router-link to="/">Home</router-link>| <router-link to="/store">Store</router-link>|
     <router-link to="/about">About</router-link>
   </div>
-  <router-view />
+  <router-view v-slot="{ Component }">
+    <keep-alive>
+      <component :is="Component"></component>
+    </keep-alive>
+  </router-view>
 </template>
 
 <script lang="ts">
@@ -17,7 +21,7 @@ export default defineComponent({
 <style>
 body {
   font-size: 16px;
-  background-color: #f8f8f8;
+  background-color: #fff;
   -webkit-font-smoothing: antialiased;
 }
 </style>
