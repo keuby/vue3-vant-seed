@@ -20,19 +20,19 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": true
   },
+  "vetur.validation.style": false,
   "vetur.format.defaultFormatter.css": "none",
   "vetur.format.defaultFormatter.less": "none",
   "vetur.format.defaultFormatter.scss": "none",
   "vetur.format.defaultFormatter.postcss": "none",
-  "prettier.requireConfig": true,
-  "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false,
-  "vite.port": 3000,
-  "vite.autoStart": false,
   "vetur.grammar.customBlocks": {
     "docs": "md",
     "i18n": "json",
     "route": "yaml"
-  }
+  },
+  "prettier.requireConfig": true,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "vite.port": 3000
 }

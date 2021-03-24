@@ -3,6 +3,7 @@
     test dynamic param
     <div>name: {{ name }}</div>
     <div>{{ $route.meta.auth }}</div>
+    <div><InputNumber /></div>
   </div>
 </template>
 
