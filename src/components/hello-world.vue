@@ -93,7 +93,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/runtime-core'
+import { defineComponent } from '@vue/runtime-core';
 
 export default defineComponent({
   name: 'HelloWorld',
@@ -103,7 +103,7 @@ export default defineComponent({
       required: true,
     },
   },
-})
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

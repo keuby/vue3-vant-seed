@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/runtime-core'
+import { defineComponent } from '@vue/runtime-core';
 export default defineComponent({
   props: {
     name: {
@@ -16,7 +16,7 @@ export default defineComponent({
       required: true,
     },
   },
-})
+});
 </script>
 
 <route>

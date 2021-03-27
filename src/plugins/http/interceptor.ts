@@ -1,23 +1,23 @@
-import { SafeAny } from '@/utils'
-import { AxiosResponse } from 'axios'
+import { SafeAny } from '@/utils';
+import { AxiosResponse } from 'axios';
 
 export interface AxiosInterceptor {
-  onFulfilled?(response: AxiosResponse<SafeAny>): SafeAny
-  onRejected?(error: SafeAny): SafeAny
+  onFulfilled?(response: AxiosResponse<SafeAny>): SafeAny;
+  onRejected?(error: SafeAny): SafeAny;
 }
 
 export class DefaultInterceptor implements AxiosInterceptor {
   onFulfilled?(response: AxiosResponse<SafeAny>): SafeAny {
-    return response.data
+    return response.data;
   }
 
   onRejected(error: SafeAny): SafeAny {
     if (!error.response) {
-      return Promise.reject(error)
+      return Promise.reject(error);
     }
-    const response = error.response
-    const code = response.status
-    const data = response.data
+    const response = error.response;
+    const code = response.status;
+    const data = response.data;
 
     if (!response.config.skipHandle) {
       if (code === 400) {
@@ -32,12 +32,12 @@ export class DefaultInterceptor implements AxiosInterceptor {
         // TODO: 服务器内部错误
       }
     }
-    return Promise.reject(data)
+    return Promise.reject(data);
   }
 }
 
 declare module 'axios' {
   export interface AxiosRequestConfig {
-    skipHandle?: boolean
+    skipHandle?: boolean;
   }
 }

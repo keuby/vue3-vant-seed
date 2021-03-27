@@ -1,16 +1,16 @@
-import { App } from 'vue'
-import axios from 'axios'
-import adapter from './adapter'
-import HttpClient from './http'
-import { DefaultInterceptor } from './interceptor'
+import { App } from 'vue';
+import axios from 'axios';
+import adapter from './adapter';
+import HttpClient from './http';
+import { DefaultInterceptor } from './interceptor';
 
-let httpClient: HttpClient = null
+let httpClient: HttpClient = null;
 
-export function isInstalled(app: App) {
-  return app.config.globalProperties.$http != null
+export function isInstalled(app: App): boolean {
+  return app.config.globalProperties.$http != null;
 }
 
-export function createHttpClient() {
+export function createHttpClient(): HttpClient {
   const instance = axios.create({
     baseURL: import.meta.env.VITE_SERVER_URL as string,
     headers: {
@@ -19,15 +19,15 @@ export function createHttpClient() {
     },
     timeout: 10000,
     adapter: adapter(axios.defaults.adapter), // 初始化 adapter
-  })
+  });
 
   // 初始化 intercepter
-  const intercepter = new DefaultInterceptor()
-  instance.interceptors.response.use(intercepter.onFulfilled, intercepter.onRejected)
+  const intercepter = new DefaultInterceptor();
+  instance.interceptors.response.use(intercepter.onFulfilled, intercepter.onRejected);
 
-  return (httpClient = new HttpClient(instance))
+  return (httpClient = new HttpClient(instance));
 }
 
-export function getHttpClient() {
-  return httpClient || createHttpClient()
+export function getHttpClient(): HttpClient {
+  return httpClient || createHttpClient();
 }

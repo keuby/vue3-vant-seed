@@ -1,38 +1,26 @@
 {
   "editor.formatOnSave": true,
-  "[vue]": {
-    "editor.defaultFormatter": "octref.vetur"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[less]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "stylelint.configFile": "stylelint.config.js",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": false,
     "source.fixAll.stylelint": true
   },
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "prettier.enable": true,
+  "vetur.format.enable": true,
   "vetur.validation.style": false,
+  "vetur.validation.template": false,
   "vetur.format.defaultFormatter.css": "none",
   "vetur.format.defaultFormatter.less": "none",
-  "vetur.format.defaultFormatter.scss": "none",
-  "vetur.format.defaultFormatter.postcss": "none",
   "vetur.grammar.customBlocks": {
     "docs": "md",
     "i18n": "json",
     "route": "yaml"
   },
-  "prettier.requireConfig": true,
-  "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false,
-  "vite.port": 3000
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  }
 }

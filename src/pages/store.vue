@@ -19,36 +19,36 @@
 </template>
 
 <script lang="ts">
-import { useTokenStore } from '@/store'
-import { defineComponent, reactive } from '@vue/runtime-core'
-import { useHttpClient } from '@/plugins/http'
+import { useTokenStore } from '@/store';
+import { defineComponent, reactive } from '@vue/runtime-core';
+import { useHttpClient } from '@/plugins/http';
 
 export default defineComponent({
   setup() {
-    const http = useHttpClient()
-    const user = useTokenStore()
+    const http = useHttpClient();
+    const user = useTokenStore();
     const state = reactive({
       list: [],
       loading: false,
       finished: false,
-    })
+    });
 
     const onLoad = () => {
       http.get('/typicode/demo/db').then((data) => {
-        state.loading = false
-        const posts = data.posts
+        state.loading = false;
+        const posts = data.posts;
         if (posts.length === 0) {
-          state.finished = true
-          return
+          state.finished = true;
+          return;
         }
-        state.list.push(...posts)
+        state.list.push(...posts);
         if (state.list.length > 40) {
-          state.finished = true
+          state.finished = true;
         }
-      })
-    }
+      });
+    };
 
-    return { user, state, onLoad }
+    return { user, state, onLoad };
   },
-})
+});
 </script>

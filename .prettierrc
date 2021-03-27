@@ -3,10 +3,8 @@
   "proseWrap": "preserve",
   "tabWidth": 2,
   "useTabs": false,
-  "bracketSpacing": true,
   "stylelintIntegration": true,
   "eslintIntegration": true,
-  "semi": false,
   "vueIndentScriptAndStyle": false,
   "printWidth": 100
 }

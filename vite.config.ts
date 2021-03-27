@@ -1,16 +1,16 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import jsx from '@vitejs/plugin-vue-jsx'
-import pages from 'vite-plugin-pages'
-import markdown from 'vite-plugin-md'
-import components from 'vite-plugin-components'
-import styleImport from 'vite-plugin-style-import'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import jsx from '@vitejs/plugin-vue-jsx';
+import pages from 'vite-plugin-pages';
+import markdown from 'vite-plugin-md';
+import components from 'vite-plugin-components';
+import styleImport from 'vite-plugin-style-import';
 
-import { resolve } from 'path'
-import { readFileSync } from 'fs'
-import postcss from 'postcss'
-import lessParser from 'postcss-less'
-import postcssImport from 'postcss-import'
+import { resolve } from 'path';
+import { readFileSync } from 'fs';
+import postcss from 'postcss';
+import lessParser from 'postcss-less';
+import postcssImport from 'postcss-import';
 
 function GloalStylesLoader(...paths: string[]) {
   const styles = Promise.all(
@@ -20,23 +20,23 @@ function GloalStylesLoader(...paths: string[]) {
         parser: lessParser,
       })
     )
-  ).then((results) => results.join(''))
-  return (content: string) => styles.then((res) => res + content)
+  ).then((results) => results.join(''));
+  return (content: string) => styles.then((res) => res + content);
 }
 
 const VantResolver = () => (name: string) => {
   if (name.startsWith('Van')) {
-    const importName = name.slice(3)
+    const importName = name.slice(3);
     const styleName =
       importName[0].toLowerCase() +
-      importName.slice(1).replace(/[A-Z]/g, (c) => '-' + c.toLowerCase())
+      importName.slice(1).replace(/[A-Z]/g, (c) => '-' + c.toLowerCase());
     return {
       importName,
       path: 'vant',
       sideEffects: `vant/es/${styleName}/style/index`,
-    }
+    };
   }
-}
+};
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -117,4 +117,4 @@ export default defineConfig({
       },
     },
   },
-})
+});
