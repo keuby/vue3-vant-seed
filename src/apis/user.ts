@@ -1,7 +1,8 @@
-import { useHttpClient } from '@/plugins/http'
+import { SafeAny } from '@/utils';
+import { useHttpClient } from '@/plugins/http';
 
-const http = useHttpClient()
+const http = useHttpClient();
 
-export function getUserProfile() {
-  return http.get('/typicode/demo/db')
+export function getUserProfile(): Promise<SafeAny> {
+  return http.get('/typicode/demo/db');
 }

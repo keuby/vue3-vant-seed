@@ -1,7 +1,10 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link>| <router-link to="/store">Store</router-link>|
-    <router-link to="/about">About</router-link>
+    <router-link to="/">Home</router-link>
+    |
+    <router-link to="/store">Store</router-link>
+    |
+    <router-link to="/parent/name">With Child and Component</router-link>
   </div>
   <router-view v-slot="{ Component }">
     <keep-alive>

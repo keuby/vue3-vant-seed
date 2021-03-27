@@ -1,9 +1,9 @@
 import { createApp } from 'vue';
-import App from '@/App.vue';
-import router from '@/router';
-import http from '@/plugins/http';
-import touch from '@/plugins/touch';
-import store from '@/store';
+import App from './App.vue';
+import router from './router';
+import http from './plugins/http';
+import touch from './plugins/touch';
+import store from './store';
 import bootstrap from './bootstrap';
 import './styles/index.less';
 

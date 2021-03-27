@@ -6,6 +6,7 @@
     "esbenp.prettier-vscode",
     "octref.vetur",
     "formulahendry.auto-rename-tag",
-    "formulahendry.auto-close-tag"
+    "formulahendry.auto-close-tag",
+    "bradlc.vscode-tailwindcss"
   ]
 }

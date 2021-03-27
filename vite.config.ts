@@ -4,7 +4,7 @@ import jsx from '@vitejs/plugin-vue-jsx';
 import pages from 'vite-plugin-pages';
 import markdown from 'vite-plugin-md';
 import components from 'vite-plugin-components';
-import styleImport from 'vite-plugin-style-import';
+import usePluginImport from 'vite-plugin-importer';
 
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
@@ -33,7 +33,7 @@ const VantResolver = () => (name: string) => {
     return {
       importName,
       path: 'vant',
-      sideEffects: `vant/es/${styleName}/style/index`,
+      sideEffects: `vant/es/${styleName}/style/less`,
     };
   }
 };
@@ -46,7 +46,8 @@ export default defineConfig({
     }),
     jsx(),
     pages({
-      extensions: ['vue', 'md'],
+      exclude: ['**/_*.vue', '**/_*.tsx', '**/components/**'],
+      extensions: ['vue', 'md', 'tsx'],
       routeBlockLang: 'yaml',
     }),
     components({
@@ -63,14 +64,10 @@ export default defineConfig({
       },
       wrapperClasses: 'markdown-body',
     }),
-    styleImport({
-      libs: [
-        {
-          esModule: true,
-          libraryName: 'vant',
-          resolveStyle: (name) => `vant/es/${name}/style/index`,
-        },
-      ],
+    usePluginImport({
+      libraryName: 'vant',
+      libraryDirectory: 'es',
+      style: (name) => `${name}/style/less`,
     }),
   ],
   resolve: {
@@ -79,6 +76,7 @@ export default defineConfig({
         find: '@',
         replacement: resolve(__dirname, '/src'),
       },
+      { find: /^~/, replacement: '' },
     ],
   },
   css: {
@@ -111,7 +109,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          libs: ['vue-request', 'lodash', 'vant', 'axios', 'hammerjs'],
+          libs: ['lodash', 'vant', 'axios', 'hammerjs'],
           vender: ['vue', 'pinia', 'vue-router'],
         },
       },
