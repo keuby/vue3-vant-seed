@@ -1,6 +1,6 @@
 nodeVersion: 14
 stackbitVersion: ~0.3.0
-ssgName: keuby-vue3
+ssgName: custom
 buildCommand: npm run build
 publishDir: public
 assets:
