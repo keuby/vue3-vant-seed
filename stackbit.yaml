@@ -1,1 +1,14 @@
 nodeVersion: 14
+stackbitVersion: ~0.3.0
+ssgName: keuby-vue3
+buildCommand: npm run build
+publishDir: public
+assets:
+  referenceType: static
+  staticDir: static
+  uploadDir: images
+  publicPath: /
+dataDir: data
+pagesDir: content
+excludePages:
+  - README.md
