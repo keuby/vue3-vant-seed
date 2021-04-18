@@ -1,11 +1,10 @@
 import { createApp } from 'vue';
-import App from './App.vue';
+import App from './App';
 import router from './router';
 import http from './plugins/http';
 import touch from './plugins/touch';
 import store from './store';
 import bootstrap from './bootstrap';
-import './styles/index.less';
 
 const app = createApp(App);
 

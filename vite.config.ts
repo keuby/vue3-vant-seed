@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import jsx from '@vitejs/plugin-vue-jsx';
 import pages from 'vite-plugin-pages';
-import markdown from 'vite-plugin-md';
 import components from 'vite-plugin-components';
 import usePluginImport from 'vite-plugin-importer';
 
@@ -15,10 +14,13 @@ import postcssImport from 'postcss-import';
 function GloalStylesLoader(...paths: string[]) {
   const styles = Promise.all(
     paths.map((path) =>
-      postcss().use(postcssImport()).process(readFileSync(path, 'utf8'), {
-        from: path,
-        parser: lessParser,
-      })
+      postcss()
+        // @ts-ignore
+        .use(postcssImport())
+        .process(readFileSync(path, 'utf8'), {
+          from: path,
+          parser: lessParser,
+        })
     )
   ).then((results) => results.join(''));
   return (content: string) => styles.then((res) => res + content);
@@ -46,23 +48,15 @@ export default defineConfig({
     }),
     jsx(),
     pages({
-      exclude: ['**/_*.vue', '**/_*.tsx', '**/components/**'],
-      extensions: ['vue', 'md', 'tsx'],
+      exclude: ['**/components/**'],
+      extensions: ['vue'],
+      importMode: 'sync',
       routeBlockLang: 'yaml',
     }),
     components({
       deep: true,
-      extensions: ['vue'],
-      customLoaderMatcher: (path) => path.endsWith('.md'),
+      extensions: ['vue', 'tsx'],
       customComponentResolvers: [VantResolver()],
-    }),
-    markdown({
-      markdownItOptions: {
-        html: true,
-        linkify: true,
-        typographer: true,
-      },
-      wrapperClasses: 'markdown-body',
     }),
     usePluginImport({
       libraryName: 'vant',
@@ -74,7 +68,7 @@ export default defineConfig({
     alias: [
       {
         find: '@',
-        replacement: resolve(__dirname, '/src'),
+        replacement: resolve('src'),
       },
       { find: /^~/, replacement: '' },
     ],
@@ -89,10 +83,6 @@ export default defineConfig({
         ),
       },
     },
-  },
-  esbuild: {
-    jsxFactory: 'h',
-    jsxFragment: 'Fragment',
   },
   server: {
     proxy: {

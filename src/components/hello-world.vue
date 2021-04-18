@@ -17,7 +17,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<docs>
-asas
-</docs>
