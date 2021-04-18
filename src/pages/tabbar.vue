@@ -15,8 +15,8 @@ export default defineComponent({
   },
   render() {
     return (
-      <Wrapper class="w-full h-full flex flex-col">
-        <div class="flex-1 w-full">
+      <Wrapper class="w-full h-full">
+        <div class="w-full" style="height: calc(100% - 50px)">
           <RouterView></RouterView>
         </div>
         <Tabbar v-model={[this.active]}>

@@ -12,7 +12,7 @@ export default defineComponent({
   },
   render() {
     return (
-      <div class="w-full px-5 my-3">
+      <div class="w-full px-5 py-3">
         <div>title: {this.data.title}</div>
         <div class="mt-3">content: {this.data.content}</div>
       </div>
