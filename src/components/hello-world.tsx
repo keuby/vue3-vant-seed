@@ -1,10 +1,3 @@
-<template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-  </div>
-</template>
-
-<script lang="ts">
 import { defineComponent } from '@vue/runtime-core';
 
 export default defineComponent({
@@ -15,5 +8,7 @@ export default defineComponent({
       required: true,
     },
   },
+  render() {
+    return <div>{this.msg}</div>;
+  },
 });
-</script>

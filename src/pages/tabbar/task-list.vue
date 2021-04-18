@@ -1,19 +1,25 @@
 <script lang="tsx">
+import { range } from 'lodash';
 import { defineComponent } from 'vue';
 import styled from 'vue3-styled-components';
+import TaslListItem from './components/task-list-item';
 
 const Wrapper = styled.div`
-  height: 50px;
   background-color: red;
 `;
 
 export default defineComponent({
+  name: 'TaskListItem',
+  setup() {
+    const dataList = range(5).map((i) => ({
+      title: `title${i}`,
+      content: `content${i}`,
+    }));
+    return { dataList };
+  },
   render() {
-    return (
-      <Wrapper>
-        <van-button type="primary">dianwo</van-button>
-      </Wrapper>
-    );
+    const items = this.dataList.map((data, i) => <TaslListItem data={data} key={i} />);
+    return <Wrapper>{items}</Wrapper>;
   },
 });
 </script>
